@@ -1,0 +1,83 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+  
+{% block title %}<title>CIT</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{% block additional_css %}
+{% endblock %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+</head>
+
+<body class="container-fluid">
+<!--
+		<li class="nav-item"><a class="nav-link" hrеf= "#" >Регистрация</a></li>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" hrеf="#">Удалить</a>
+				<a class="dropdown-item" href="#">Moи объявления</a>
+ -->  
+	  <div class="row">
+          <ul class="col nav justify-content-end border">
+            {% if user.is_authenticated %}
+                <li class="nav-item">User: {{ user.get_username }}</li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Профиль</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'main:profile_change'%}">Изменить личные данные</a>
+                        <a class="dropdown-item" href="{% url 'main:password_change'%}">Изменить пароль</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'main:logout'%}">Выйти</a>
+                    </div>
+                </li>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'main:logout'%}">Выйти</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link"  href="{% url 'main:login'%}?next={% url 'main:index' %}">Войти</a></li>
+            {% endif %}
+          </ul>
+    </div>
+    <div class="row">
+		{% if user.is_authenticated %}
+		<nav class="col-md-auto nav flex-column border">
+			<a class="nav-link"  href="{% url 'main:index' %}">Главная</a>
+{#			<a class="nav-link"  href="{% url 'comps' %}">Компании</a>#}
+{#			<a class="nav-link"  href="{% url 'kis-list' '0' %}">Информационные ресурсы</a>#}
+		  
+		</nav>
+		{% endif %} 
+		<section class="col border ру-2">
+			{% bootstrap_messages %}
+			{% block content %}{% endblock %}
+		  
+			{% block pagination %}
+			  {% if is_paginated %}
+				  <div class="pagination">
+					  <span class="page-links">
+						  {% if page_obj.has_previous %}
+							  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+						  {% endif %}
+						  <span class="page-current">
+							  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+						  </span>
+						  {% if page_obj.has_next %}
+							  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+						  {% endif %}
+					  </span>
+				  </div>
+			  {% endif %}
+			{% endblock %}   
+		</section>
+    </div>
+
+</body>
+</html>

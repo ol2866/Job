@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../DjangoBB/DjangoBB_Project/.idea/DjangoBB_Project.iml" filepath="$PROJECT_DIR$/../DjangoBB/DjangoBB_Project/.idea/DjangoBB_Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/dnt.iml" filepath="$PROJECT_DIR$/.idea/dnt.iml" />
     </modules>
   </component>

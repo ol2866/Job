@@ -1,0 +1,38 @@
+{% extends "basic.html" %}
+
+{% block title %}<title>Проект ЦИТ</title>{% endblock %}
+
+ <!-- Добавляем дополнительный статический CSS-файл  
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+-->
+{% block content %}
+<h1>ДНТ "Кубань"</h1>
+    <div class="row">
+		<div class="col-md-6" >
+            <div class="kart-ya">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A0198a2e1fbdf449baaad3b5690913b384fa990a0bcdd74d2ce3911b5beab313d&amp;width=620&amp;height=580&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+            <p>Всего:</p>
+		</div>
+		<div class="col-md-6 border">
+            <textarea rows="10" readonly style=" width: inherit;">
+Индекс: 385140
+
+Адрес: РЕСПУБЛИКА АДЫГЕЯ (АДЫГЕЯ),ТАХТАМУКАЙСКИЙ Р-Н,
+PП ЯБЛОНОВСКИЙ,П ПЕРЕКАТНЫЙ,УЛ ГРУШОВАЯ, 17
+
+Юридический адрес: 385140, РЕСПУБЛИКА АДЫГЕЯ (АДЫГЕЯ), ТАХТАМУКАЙСКИЙ РАЙОН,
+П ПЕРЕКАТНЫЙ, УЛ ГРУШОВАЯ, 17
+
+Телефон: 11-38-37, 64-35-37, 8 (952) 841-22-22
+            </textarea>
+            <ul>
+                <li><strong>Компаний:</strong> {{ num_dept }}</li>
+            </ul>
+		</div>
+    </div>
+
+   <!-- <p>Welcome to <em>Структурные подразделения</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p> -->
+
+{% endblock %}
